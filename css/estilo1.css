@@ -1,0 +1,273 @@
+/* Aplica reglas globales a todos los 
+elementos, incluidos los pseudo-elementos 
+::after y ::before */
+*, *::after, *::before {
+    box-sizing: border-box;
+    margin: 1.5%;
+    padding: 0%;
+    border: 0%;
+}
+
+/* Define variables CSS en el ámbito 
+global (:root) */
+:root {
+    --oscuro: #212121;
+    --gris: #757575;
+    --grisClaro: #dfe9f3;
+    --primario: #FFC107;
+    --secundario: #0097A7;
+    /***************************/
+    --Charcoal: #36454F; 
+    --DeepBlue: #0021f3; 
+    --BlueViolet: #8a2be2; 
+    --NeonGreen: #39ff14; 
+    --MalachiteGreen: #0BDA51; 
+    --CrimsonRed: #990000; 
+    --DeepOrange: #dc4d01;
+    --LightBlue: #87CEEB;
+    --Brown2: #964B00;
+    --DeepPink: #ff1493;
+    --Gold2: #ffbf00;
+}
+
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+/* width */
+/* ::-webkit-scrollbar {
+    width: auto;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track-piece {
+    background: black;
+} */
+
+/* Handle */
+/* ::-webkit-scrollbar-thumb {
+    background: var(--DeepBlue);
+    border-radius: 10px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+    background: aqua;
+} */
+
+html, body {
+    overflow-x: hidden;
+    scrollbar-color: #ffbf00 #000000;
+    scrollbar-width: auto;
+}
+
+/****************************************************************************************************/
+/****************************************************************************************************/
+
+/* Establece el tamaño de fuente 
+base para el documento HTML */
+html {
+    font-size: 62.5%;
+}
+
+/*1rem = 10px*/
+body {
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Sono', sans-serif;
+    font-size: 16px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* height: 100vh; */
+    margin: 0;
+    color: white;
+    padding: 5px;
+}
+
+header {
+    margin: 0 auto 0 auto;
+}
+
+h1 {
+    color: var(--NeonGreen);
+    border-bottom: 
+        4px solid var(--NeonGreen);
+    text-align: center;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+
+main h2 {
+    text-decoration: underline;
+    text-align: center;
+}
+
+.primerh2 {
+    color: aqua;
+    font-size: 26px;
+    border-right: 4px solid var(--NeonGreen);
+    border-left: 4px solid var(--NeonGreen);
+    padding: 0 3rem 0 3rem;
+}
+
+.segundoh2 {
+    font-size: 26px;
+    font-style: italic;
+}
+
+.segundoh2_2 {
+    color: aqua;
+    font-size: 26px;
+    font-style: italic;
+    text-decoration: underline;
+    text-align: center;
+}
+
+main h3 {
+    text-decoration: underline;
+    text-align: center;
+    font-size: 26px;
+    font-style: italic;
+}
+
+.boton1 {
+    border: 4px solid var(--Gold2);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: aqua;
+    background-color: var(--DeepBlue);
+    border-radius: 1rem;
+}
+
+.boton1:hover {
+    cursor: pointer;
+    color: var(--DeepBlue);
+    background-color: aqua;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.boton2 {
+    border: 4px solid var(--Gold2);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: aqua;
+    background-color: var(--DeepBlue);
+    border-radius: 1rem;
+}
+
+.boton2:hover {
+    cursor: pointer;
+    color: var(--DeepBlue);
+    background-color: aqua;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.boton_editar {
+    border: 4px solid var(--Gold2);
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: aqua;
+    background-color: var(--DeepBlue);
+    border-radius: 1rem;
+}
+
+.boton_editar:hover {
+    cursor: pointer;
+    color: var(--DeepBlue);
+    background-color: aqua;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.boton_eliminar {
+    border: 4px solid red;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    color: aqua;
+    background-color: var(--DeepBlue);
+    border-radius: 1rem;
+}
+
+.boton_eliminar:hover {
+    cursor: pointer;
+    color: var(--DeepBlue);
+    background-color: aqua;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+input {
+    border: 6px solid aqua;
+    border-radius: 2rem;
+    background-color: black;
+    color: var(--Gold2);
+    padding: 1rem 1.5rem 1rem 1.5rem;
+    font-style: italic;
+}
+
+#listaCategorias {
+    width: 70%;
+}
+
+#listaProductos {
+    width: 70%;    
+}
+
+#editCategoriaForm {
+    border: 10px solid aqua;
+    border-radius: 2rem;
+    padding: 1.5rem;
+}
+
+#editProductoForm {
+    border: 10px solid aqua;
+    border-radius: 2rem;
+    padding: 1.5rem;
+}
+
+.linea_horizontal {
+    width: 100%; 
+    height: 4px;
+    background-color: var(--NeonGreen); 
+}
+
+.linea_horizontal2 {
+    width: 80%; 
+    height: 4px;
+    background-color: var(--NeonGreen); 
+}
+
+.linea_horizontal3 {
+    width: 100%; 
+    height: 4px;
+    background-color: aqua; 
+}
+
+/* #listaCategorias {
+    border-top: 4px solid aqua;
+    border-bottom: 4px solid aqua;
+    border-right: 4px solid aqua;
+}
+
+#listaProductos {
+    border-top: 4px solid aqua;
+    border-bottom: 4px solid aqua;
+    border-right: 4px solid aqua;
+} */
+
+footer {
+    font-style: italic;
+    text-align: center;
+    margin: 0;
+}
+
+footer h2 {
+    color: var(--NeonGreen);
+    border-top: 4px solid var(--NeonGreen);    
+}
