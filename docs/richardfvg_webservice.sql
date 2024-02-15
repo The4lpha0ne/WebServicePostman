@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 14, 2024 at 04:04 AM
+-- Generation Time: Feb 15, 2024 at 02:36 PM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.2.0
 
@@ -96,7 +96,7 @@ ALTER TABLE `tm_producto`
 -- AUTO_INCREMENT for table `tm_categoria`
 --
 ALTER TABLE `tm_categoria`
-  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `cat_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `tm_producto`
