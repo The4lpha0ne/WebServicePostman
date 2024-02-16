@@ -2,13 +2,20 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <!-- Compatibilidad con Internet Explorer -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" 
     content="width=device-width, initial-scale=1.0">
+    <!-- Ícono para la pestaña del navegador -->
     <link rel="icon" href="./img/RFVG.png" type="image/x-icon">
     <link rel="stylesheet" href="./css/estilo1.css">
     <title>API REST con AJAX y JQUERY</title>
+
     <!-- ---------------------------------------- -->
+    <!-- Incluye jQuery a través de un CDN para facilitar 
+        el manejo de eventos, animaciones y llamadas AJAX, 
+        mejorando la velocidad de carga al aprovechar el 
+        almacenamiento en caché del navegador. -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
@@ -22,6 +29,7 @@
         <h2 class="primerh2">
             API REST con AJAX y JQUERY:
         </h2>
+        <!-- Separación visual -->
         <div class="linea_horizontal2"></div>
 
         <h2 class="segundoh2">Añadir Nueva Categoría</h2>
@@ -66,14 +74,18 @@
         </form>
 
         <div class="linea_horizontal"></div>
-    
-        <!-- Formulario de edición de categoría -->
+
+        <!-- Sección oculta para la edición de 
+            categorías en un formulario, se 
+            muestra según sea necesario -->
         <div id="editCategoriaForm" style="display:none;">
             <h2 class="segundoh2_2">Editar Categoría</h2>
             <br>
 
             <b>ID: </b>
             <br>
+            <!-- Campo para mostrar el ID de la 
+                categoría, no editable -->
             <input type="number" id="edit_cat_id" readonly><br>
             <br>
 
@@ -90,13 +102,17 @@
             <button onclick="submitEditCategoria()" class="boton2">Guardar Cambios</button>
         </div>
     
-        <!-- Formulario de edición de producto -->
+        <!-- Sección oculta para la edición de 
+            productos en un formulario, se 
+            muestra según sea necesario -->
         <div id="editProductoForm" style="display:none;">
             <h2 class="segundoh2_2">Editar Producto</h2>
             <br>
 
             <b>ID: </b>
             <br>
+            <!-- Campo para mostrar el ID del 
+                producto, no editable -->
             <input type="number" id="edit_prod_id" readonly><br>
             <br>
 
@@ -125,11 +141,13 @@
     
         <div class="linea_horizontal"></div>
     
+        <!-- Lista las categorías existentes -->
         <h3>Categorías Existentes</h3>
         <ul id="listaCategorias"></ul>
     
         <div class="linea_horizontal2"></div>
         
+        <!-- Lista los productos existentes -->
         <h3>Productos Existentes</h3>
         <ul id="listaProductos"></ul>
     </main>
@@ -141,6 +159,9 @@
         </h2>
     </footer>
     <!-- ---------------------------------------- -->
+    <!-- Vincula el script del fichero 
+        JavaScript para las funcionalidades 
+        adicionales -->
     <script src="./js/ajax_jquery.js"></script>
 </body>
 </html>
