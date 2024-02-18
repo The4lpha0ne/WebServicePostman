@@ -2,8 +2,8 @@ $(document).ready(function() {
     // 1. Función para obtener y mostrar la lista de 
     // categorías
     function obtenerCategorias() {
-        // 2. Realiza una petición AJAX para obtener las 
-        // categorías
+        // 2. Realiza una petición AJAX con jQuery para 
+        // obtener las categorías
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=GetAll',
             // 3. Tipo de solicitud HTTP
@@ -30,8 +30,9 @@ $(document).ready(function() {
                     </li>
                     <div class="linea_horizontal3"></div>`;
                 });
-                // 9. Asigna el HTML construido al 
-                // elemento con ID listaCategorias
+                // 9. Se utiliza jQuery para asignar el 
+                // HTML construido al elemento con ID 
+                // listaCategorias
                 $('#listaCategorias').html(htmlCategorias);
             },
             // 10. Función a ejecutar si la solicitud 
@@ -45,8 +46,8 @@ $(document).ready(function() {
     // 11. Función para obtener y mostrar la lista de 
     // productos
     function obtenerProductos() {
-        // 12. Realiza una petición AJAX para obtener 
-        // los productos
+        // 12. Realiza una petición AJAX con jQuery para 
+        // obtener los productos
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=GetAllProductos',
             type: 'GET',
@@ -69,8 +70,8 @@ $(document).ready(function() {
                     </li>
                     <div class="linea_horizontal3"></div>`;
                 });
-                // 16. Inserta el HTML de los productos en 
-                // el documento
+                // 16. Se utiliza jQuery para insertar el 
+                // HTML de los productos en el documento
                 $('#listaProductos').html(htmlProductos);
             },
             // 17. Función a ejecutar si la solicitud falla
@@ -83,13 +84,15 @@ $(document).ready(function() {
     // 18. Define la función para mostrar el formulario 
     // de edición de categoría
     window.mostrarEditarCategoria = function(cat_id, cat_nom, cat_obs) {
+        // 19. Se utiliza jQuery para asignar 
+        // valores y mostrar el formulario
         $('#edit_cat_id').val(cat_id);
         $('#edit_cat_nom').val(cat_nom);
         $('#edit_cat_obs').val(cat_obs);
         $('#editCategoriaForm').show();
     };
 
-    // 19. Muestra el formulario de edición para 
+    // 20. Muestra el formulario de edición para 
     // producto
     window.mostrarEditarProducto = function(prod_id, cat_id, prod_nom, prod_desc, prod_precio) {
         $('#edit_prod_id').val(prod_id);
@@ -100,28 +103,30 @@ $(document).ready(function() {
         $('#editProductoForm').show();
     };
 
-    // 20. Guarda los cambios de la categoría 
+    // 21. Guarda los cambios de la categoría 
     // editada
     window.submitEditCategoria = function() {
         var cat_id = $('#edit_cat_id').val();
         var cat_nom = $('#edit_cat_nom').val();
         var cat_obs = $('#edit_cat_obs').val();
 
-        // 21. Realiza una solicitud AJAX para 
-        // actualizar la categoría
+        // 22. Realiza una solicitud AJAX con jQuery 
+        // para actualizar la categoría
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Update',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ cat_id, cat_nom, cat_obs }),
-            // 22. Función a ejecutar si la solicitud 
+            // 23. Función a ejecutar si la solicitud 
             // es exitosa
             success: function(response) {
                 alert('Categoría actualizada correctamente');
                 obtenerCategorias();
+                // 24. Se utiliza jQuery para ocultar 
+                // el formulario
                 $('#editCategoriaForm').hide();
             },
-            // 23. Función a ejecutar si la solicitud 
+            // 25. Función a ejecutar si la solicitud 
             // falla
             error: function() {
                 alert('Error al actualizar categoría');
@@ -129,7 +134,7 @@ $(document).ready(function() {
         });
     };
 
-    // 24. Define la función para guardar los cambios 
+    // 26. Define la función para guardar los cambios 
     // del producto editado
     window.submitEditProducto = function() {
         var prod_id = $('#edit_prod_id').val();
@@ -138,8 +143,8 @@ $(document).ready(function() {
         var prod_desc = $('#edit_prod_desc').val();
         var prod_precio = $('#edit_prod_precio').val();
 
-        // 25. Realiza una solicitud AJAX para actualizar 
-        // el producto
+        // 27. Realiza una solicitud AJAX con jQuery 
+        // para actualizar el producto
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=UpdateProducto',
             type: 'POST',
@@ -156,11 +161,11 @@ $(document).ready(function() {
         });
     };
 
-    // 26. Define la función para eliminar una categoría
+    // 28. Define la función para eliminar una categoría
     window.eliminarCategoria = function(cat_id) {
         if(confirm("¿Estás seguro de querer eliminar esta categoría?")) {
-            // 27. Realiza una solicitud AJAX para 
-            // eliminar la categoría
+            // 29. Realiza una solicitud AJAX con jQuery 
+            // para eliminar la categoría
             $.ajax({
                 url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Delete',
                 type: 'POST',
@@ -177,11 +182,11 @@ $(document).ready(function() {
         }
     };
 
-    // 28. Define la función para eliminar un producto
+    // 30. Define la función para eliminar un producto
     window.eliminarProducto = function(prod_id) {
         if(confirm("¿Estás seguro de querer eliminar este producto?")) {
-            // 29. Realiza una solicitud AJAX para 
-            // eliminar el producto
+            // 31. Realiza una solicitud AJAX con jQuery 
+            // para eliminar el producto
             $.ajax({
                 url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=DeleteProducto',
                 type: 'POST',
@@ -198,14 +203,16 @@ $(document).ready(function() {
         }
     };
 
-    // 30. Define la función para añadir una nueva 
+    // 32. Define la función para añadir una nueva 
     // categoría mediante el formulario
     $('#addCategoriaForm').submit(function(e) {
+        // 33. Se utiliza jQuery para prevenir el 
+        // comportamiento por defecto
         e.preventDefault();
         var cat_nom = $('#cat_nom').val();
         var cat_obs = $('#cat_obs').val();
-        // 31. Realiza una solicitud AJAX para insertar 
-        // la nueva categoría
+        // 34. Realiza una solicitud AJAX con jQuery 
+        // para insertar la nueva categoría
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Insert',
             type: 'POST',
@@ -213,6 +220,7 @@ $(document).ready(function() {
             data: JSON.stringify({ cat_nom, cat_obs }),
             success: function(response) {
                 alert('Categoría añadida correctamente');
+                // 35. Se utiliza jQuery para resetear el formulario
                 $('#addCategoriaForm')[0].reset();
                 obtenerCategorias();
             },
@@ -222,7 +230,7 @@ $(document).ready(function() {
         });
     });
 
-    // 32. Define la función para añadir un nuevo 
+    // 36. Define la función para añadir un nuevo 
     // producto mediante el formulario
     $('#addProductoForm').submit(function(e) {
         e.preventDefault();
@@ -230,21 +238,22 @@ $(document).ready(function() {
         var prod_nom = $('#prod_nom').val();
         var prod_desc = $('#prod_desc').val();
         var prod_precio = $('#prod_precio').val();
-        // 33. Realiza una solicitud AJAX para insertar 
-        // el nuevo producto
+        // 37. Realiza una solicitud AJAX con jQuery 
+        // para insertar el nuevo producto
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=InsertProducto',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ cat_id, prod_nom, prod_desc, prod_precio }),
-            // 34. Función a ejecutar si la solicitud 
+            // 38. Función a ejecutar si la solicitud 
             // es exitosa
             success: function(response) {
                 alert('Producto añadido correctamente');
+                // 39. Se utiliza jQuery para resetear el formulario
                 $('#addProductoForm')[0].reset();
                 obtenerProductos();
             },
-            // 35. Función a ejecutar si la solicitud 
+            // 40. Función a ejecutar si la solicitud 
             // falla
             error: function() {
                 alert('Error al añadir producto');
@@ -252,7 +261,7 @@ $(document).ready(function() {
         });
     });
 
-    // 36. Inicializa las listas de categorías y 
+    // 41. Inicializa las listas de categorías y 
     // productos al cargar la página
     obtenerCategorias();
     obtenerProductos();
