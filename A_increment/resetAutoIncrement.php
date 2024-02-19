@@ -1,4 +1,16 @@
 <?php
+    /**
+     * Este script gestiona solicitudes POST para restablecer el AUTO_INCREMENT de una tabla específica.
+     * Configura CORS para aceptar solicitudes de cualquier origen y establece el tipo de contenido de la respuesta a JSON.
+     * Intenta conectar a una base de datos y restablecer el valor de AUTO_INCREMENT de la tabla 'tm_producto'.
+     * 
+     * Es crucial usar este script con precaución, especialmente en entornos de producción,
+     * ya que restablecer AUTO_INCREMENT puede impactar la integridad de los datos.
+     * 
+     * Solo debe realizarse esta operación cuando sea seguro y apropiado, como durante el mantenimiento de la base de datos
+     * o la inicialización de un entorno de pruebas.
+     */
+
     // 1. Permite solicitudes de cualquier origen
     header("Access-Control-Allow-Origin: *");
     // 2. Permite métodos GET y POST para las solicitudes
@@ -13,6 +25,12 @@
     $password = "";
 
     // 5. Comprueba si el método de solicitud es POST
+    /**
+     * Comprueba si el método de solicitud es POST.
+     * En caso de ser POST, intenta restablecer el AUTO_INCREMENT de la tabla 'tm_producto'.
+     * Si ocurre un error, devuelve un mensaje de error JSON.
+     * Si el método no es POST, envía una respuesta indicando que el método no está permitido.
+     */
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // 6. Crea una nueva conexión PDO

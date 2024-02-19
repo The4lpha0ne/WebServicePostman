@@ -1,12 +1,33 @@
 <?php
+    /**
+     * Script para gestionar las categorías mediante una API, permitiendo realizar operaciones CRUD.
+     * 
+     * Permite el acceso desde cualquier origen y soporta los métodos GET y POST.
+     * Se utiliza para manejar las categorías activas en una base de datos, incluyendo la obtención de todas las categorías,
+     * una categoría por ID, inserción, actualización y eliminación de categorías.
+     */
+
     header("Access-Control-Allow-Origin: *");
     header("Access-Control-Allow-Methods: GET, POST");
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     header('Content-Type: application/json');
 
     // 1. Define la clase Categoria que extiende de Conectar para utilizar la conexión a la base de datos.
+    /**
+     * Clase Categoria que extiende de Conectar para utilizar la conexión a la base de datos.
+     * 
+     * @access public
+     */
     Class Categoria extends Conectar {
         // 2. Obtiene todas las categorías activas de la base de datos.
+        /**
+         * Obtiene todas las categorías activas de la base de datos.
+         * 
+         * Realiza una consulta para obtener todas las categorías que están marcadas como activas.
+         * 
+         * @access public
+         * @return array Asociativo con todas las categorías activas.
+         */
         public function get_categoria() {
             // 3. Establece conexión con la base de datos.
             $conectar = parent::conexion();
@@ -25,6 +46,15 @@
         }
 
         // 8. Obtiene una categoría por su ID.
+        /**
+         * Obtiene una categoría por su ID.
+         * 
+         * Realiza una consulta para obtener los detalles de una categoría específica por su identificador único.
+         * 
+         * @access public
+         * @param int $cat_id ID de la categoría a obtener.
+         * @return array Asociativo con la categoría solicitada.
+         */
         public function get_categoria_x_id($cat_id) {
             $conectar = parent::conexion();
             parent::set_names();
@@ -44,6 +74,16 @@
         }
 
         // 14. Inserta una nueva categoría en la base de datos.
+        /**
+         * Inserta una nueva categoría en la base de datos.
+         * 
+         * Añade una nueva categoría con un nombre y observaciones opcionales.
+         * 
+         * @access public
+         * @param string $cat_nom Nombre de la nueva categoría.
+         * @param string $cat_obs Observaciones de la nueva categoría.
+         * @return array Asociativo con el resultado de la operación.
+         */
         public function insert_categoria($cat_nom, $cat_obs) {
             $conectar = parent::conexion();
             parent::set_names();
@@ -64,6 +104,17 @@
         }
 
         // 19. Actualiza una categoría existente en la base de datos.
+        /**
+         * Actualiza una categoría existente en la base de datos.
+         * 
+         * Modifica los datos de una categoría existente basándose en su ID.
+         * 
+         * @access public
+         * @param int $cat_id ID de la categoría a actualizar.
+         * @param string $cat_nom Nuevo nombre de la categoría.
+         * @param string $cat_obs Nuevas observaciones de la categoría.
+         * @return array Asociativo con el resultado de la operación.
+         */
         public function update_categoria($cat_id, $cat_nom, $cat_obs) {
             $conectar = parent::conexion();
             parent::set_names();
@@ -85,6 +136,15 @@
         }
 
         // 24. Define el método para eliminar una categoría por su ID.
+        /**
+         * Elimina una categoría por su ID.
+         * 
+         * Elimina de la base de datos la categoría especificada por el ID proporcionado.
+         * 
+         * @access public
+         * @param int $cat_id ID de la categoría a eliminar.
+         * @return bool Verdadero si la operación fue exitosa, falso en caso contrario.
+         */
         public function delete_categoria($cat_id) {
             // 25. Establece conexión con la base de datos.
             $conectar = parent::conexion();

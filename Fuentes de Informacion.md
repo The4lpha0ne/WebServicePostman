@@ -14,6 +14,8 @@ https://phpdelusions.net/
 ---
 https://restapitutorial.com/
 ---
+https://www.juntadeandalucia.es/servicios/madeja/sites/default/files/historico/1.4.0/contenido-libro-pautas-103.html
+---
 
 ---
 ---
@@ -55,6 +57,14 @@ https://youtu.be/fK88EgFNf3w?si=IWJgpHR5by5t8OzC
 https://youtu.be/e02TDpc5otY?si=XnCMdRGtCJNdXLpx
 ---
 https://youtu.be/hfmP-HUkcvA?si=ip33BN4oSB5WV91b
+---
+https://www.youtube.com/shorts/AiLPiA9tlcU
+---
+https://www.youtube.com/watch?v=dr50B7kjeG0
+---
+https://www.youtube.com/watch?v=KkoXRjE6Kqg
+--- 
+https://www.youtube.com/watch?v=cMK_guyfoJw
 ---
 
 ---

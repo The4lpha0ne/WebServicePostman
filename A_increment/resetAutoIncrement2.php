@@ -1,4 +1,16 @@
 <?php
+    /**
+     * Script para gestionar la solicitud POST para restablecer el AUTO_INCREMENT de la tabla tm_categoria.
+     * Configura los encabezados para permitir solicitudes CORS de cualquier origen y establece el tipo de contenido de la respuesta a JSON.
+     * Realiza una conexión a la base de datos y ejecuta una consulta SQL para restablecer el AUTO_INCREMENT.
+     * 
+     * Es crucial usar este script con precaución, especialmente en entornos de producción,
+     * ya que restablecer AUTO_INCREMENT puede impactar la integridad de los datos.
+     * 
+     * Solo debe realizarse esta operación cuando sea seguro y apropiado, como durante el mantenimiento de la base de datos
+     * o la inicialización de un entorno de pruebas.
+     */
+
     // 1. Establece los encabezados para permitir solicitudes de cualquier origen.
     header("Access-Control-Allow-Origin: *");
     // 2. Establece los métodos HTTP permitidos para las solicitudes.
@@ -13,6 +25,9 @@
     $password = "";
 
     // 5. Comprueba si el método de la solicitud actual es POST.
+    /**
+     * Procesa la solicitud POST para restablecer el AUTO_INCREMENT de la tabla tm_categoria.
+     */
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // 6. Establece una nueva conexión PDO con la base de datos.
