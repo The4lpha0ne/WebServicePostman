@@ -87,13 +87,26 @@ $(document).ready(function() {
     function(cat_id, cat_nom, cat_obs) {
         // 19. Se utiliza jQuery para asignar 
         // valores y mostrar el formulario
+
+        // 20. Asigna el ID de la categoría al campo 
+        // correspondiente en el formulario de edición
         $('#edit_cat_id').val(cat_id);
+
+        // 21. Asigna el nombre de la categoría al campo 
+        // de texto 'Nombre' en el formulario de edición
         $('#edit_cat_nom').val(cat_nom);
+
+        // 22. Asigna las observaciones de la categoría al 
+        // campo de texto 'Observaciones' en el formulario 
+        // de edición
         $('#edit_cat_obs').val(cat_obs);
+
+        // 23. Hace visible el formulario de edición al 
+        // usuario para que pueda realizar cambios
         $('#editCategoriaForm').show();
     };
 
-    // 20. Muestra el formulario de edición para 
+    // 24. Muestra el formulario de edición para 
     // producto
     window.mostrarEditarProducto = 
     function(
@@ -107,38 +120,77 @@ $(document).ready(function() {
         $('#editProductoForm').show();
     };
 
-    // 21. Guarda los cambios de la categoría 
+    // 25. Guarda los cambios de la categoría 
     // editada
     window.submitEditCategoria = function() {
+        // 26. Recupera el valor del ID de la categoría 
+        // desde el campo de formulario correspondiente
         var cat_id = $('#edit_cat_id').val();
+
+        // 27. Recupera el nombre actualizado de la 
+        // categoría desde el campo de texto 'Nombre' 
+        // en el formulario
         var cat_nom = $('#edit_cat_nom').val();
+
+        // 28. Recupera las observaciones actualizadas de 
+        // la categoría desde el campo de texto 
+        // 'Observaciones'
         var cat_obs = $('#edit_cat_obs').val();
 
-        // 22. Realiza una solicitud AJAX con jQuery 
-        // para actualizar la categoría
+        // 29. Inicia una solicitud AJAX utilizando jQuery 
+        // para actualizar los datos de una categoría
         $.ajax({
+            // 30. Especifica la URL del servidor donde se 
+            // enviará la solicitud POST. Esta URL apunta al 
+            // controlador de categorías que maneja la 
+            // actualización de datos en el servidor
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Update',
+
+            // 31. Define el método HTTP como POST, ya que se 
+            // está enviando datos para actualizar una entidad
             type: 'POST',
+            
+            // 32. Indica que el contenido enviado está en 
+            // formato JSON, un formato ligero de intercambio 
+            // de datos
             contentType: 'application/json',
+
+            // 33. Convierte los datos del formulario (ID, 
+            // nombre y observaciones de la categoría) a una 
+            // cadena JSON para enviar al servidor
             data: JSON.stringify({ cat_id, cat_nom, cat_obs }),
-            // 23. Función a ejecutar si la solicitud 
-            // es exitosa
+
+            // 34. Función que se ejecutará si la solicitud al 
+            // servidor es exitosa
             success: function(response) {
+                // 35. Muestra una alerta al usuario indicando 
+                // que la categoría ha sido actualizada 
+                // correctamente
                 alert('Categoría actualizada correctamente');
+
+                // 36. Llama a la función obtenerCategorias() 
+                // para refrescar la lista de categorías 
+                // mostrada al usuario
                 obtenerCategorias();
-                // 24. Se utiliza jQuery para ocultar 
-                // el formulario
+
+                // 37. Oculta el formulario de edición de 
+                // categoría, indicando que la edición ha 
+                // concluido
                 $('#editCategoriaForm').hide();
             },
-            // 25. Función a ejecutar si la solicitud 
-            // falla
+
+            // 38. Función que se ejecutará si hay un error 
+            // en la solicitud
             error: function() {
+                // 39. Muestra una alerta al usuario indicando 
+                // que ocurrió un error durante la 
+                // actualización de la categoría
                 alert('Error al actualizar categoría');
             }
         });
     };
 
-    // 26. Define la función para guardar los cambios 
+    // 40. Define la función para guardar los cambios 
     // del producto editado
     window.submitEditProducto = function() {
         var prod_id = $('#edit_prod_id').val();
@@ -147,30 +199,69 @@ $(document).ready(function() {
         var prod_desc = $('#edit_prod_desc').val();
         var prod_precio = $('#edit_prod_precio').val();
 
-        // 27. Realiza una solicitud AJAX con jQuery 
+        // 41. Realiza una solicitud AJAX con jQuery 
         // para actualizar el producto
         $.ajax({
+            // 42. Define la URL del endpoint al que se enviará 
+            // la solicitud POST. Este endpoint se encarga de 
+            // la lógica para actualizar la información de 
+            // un producto en el servidor
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=UpdateProducto',
+
+            // 43. Especifica el método HTTP a usar. POST se 
+            // utiliza aquí porque se está enviando datos al 
+            // servidor para actualizar un recurso existente
             type: 'POST',
+
+            // 44. Define el tipo de contenido que se enviará al 
+            // servidor. Al especificar 'application/json',
+            // se comunica al servidor que los datos enviados 
+            // están en formato JSON
             contentType: 'application/json',
+
+            // 45. Los datos que serán enviados al servidor en 
+            // formato JSON. Aquí, se convierten las 
+            // variables prod_id, cat_id, prod_nom, prod_desc, 
+            // prod_precio a una cadena JSON
             data: JSON.stringify({ 
                 prod_id, cat_id, prod_nom, prod_desc, prod_precio 
             }),
+
+            // 46. Función que se ejecutará si la solicitud es 
+            // exitosa. 'response' contiene la respuesta del 
+            // servidor
             success: function(response) {
+                // 47. Muestra una alerta al usuario indicando 
+                // que el producto ha sido actualizado 
+                // correctamente
                 alert('Producto actualizado correctamente');
+
+                // 48. Llama a la función obtenerProductos() 
+                // para refrescar la lista de productos 
+                // mostrados.
                 obtenerProductos();
+
+                // 49. Oculta el formulario de edición del 
+                // producto después de la actualización 
+                // exitosa.
                 $('#editProductoForm').hide();
             },
+
+            // 50. Función que se ejecutará si hay un error 
+            // en la solicitud
             error: function() {
+                // 51. Muestra una alerta al usuario indicando 
+                // que hubo un error al actualizar el 
+                // producto
                 alert('Error al actualizar producto');
             }
         });
     };
 
-    // 28. Define la función para eliminar una categoría
+    // 52. Define la función para eliminar una categoría
     window.eliminarCategoria = function(cat_id) {
         if(confirm("¿Estás seguro de querer eliminar esta categoría?")) {
-            // 29. Realiza una solicitud AJAX con jQuery 
+            // 53. Realiza una solicitud AJAX con jQuery 
             // para eliminar la categoría
             $.ajax({
                 url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Delete',
@@ -188,12 +279,12 @@ $(document).ready(function() {
         }
     };
 
-    // 30. Define la función para eliminar un producto
+    // 54. Define la función para eliminar un producto
     window.eliminarProducto = function(prod_id) {
         if(confirm(
             "¿Estás seguro de querer eliminar este producto?"
         )) {
-            // 31. Realiza una solicitud AJAX con jQuery 
+            // 55. Realiza una solicitud AJAX con jQuery 
             // para eliminar el producto
             $.ajax({
                 url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=DeleteProducto',
@@ -211,35 +302,83 @@ $(document).ready(function() {
         }
     };
 
-    // 32. Define la función para añadir una nueva 
-    // categoría mediante el formulario
+    // 56. Asocia el evento 'submit' al formulario identificado 
+    // por '#addCategoriaForm'. Esto significa que cuando el 
+    // formulario se intente enviar, se ejecutará la función 
+    /// definida aquí.
     $('#addCategoriaForm').submit(function(e) {
-        // 33. Se utiliza jQuery para prevenir el 
-        // comportamiento por defecto
+        // 57. Previene el comportamiento predeterminado del 
+        // formulario al enviarlo, que sería recargar la 
+        // página. Esto es crucial para permitir una 
+        // interacción sin recargas, manteniendo la página 
+        // estática mientras se envían los datos al servidor
         e.preventDefault();
+
+        // 58. Recupera el valor ingresado en el campo de 
+        // nombre de la categoría
         var cat_nom = $('#cat_nom').val();
+
+        // 59. Recupera el valor ingresado en el campo de 
+        // observaciones de la categoría
         var cat_obs = $('#cat_obs').val();
-        // 34. Realiza una solicitud AJAX con jQuery 
-        // para insertar la nueva categoría
+
+        // 60. Inicia una solicitud AJAX para enviar los datos 
+        // al servidor y añadir una nueva categoría
         $.ajax({
+            // 61. Especifica la URL del script del servidor 
+            // que manejará la inserción de la categoría
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=Insert',
+
+            // 62. Utiliza el método POST para enviar los datos, 
+            // adecuado para la creación de recursos
             type: 'POST',
+            // 63. Indica que el contenido que se está enviando 
+            // es de tipo JSON
             contentType: 'application/json',
+
+            // 64. Convierte los datos del formulario (nombre 
+            // y observaciones de la categoría) a una cadena 
+            // JSON
             data: JSON.stringify({ cat_nom, cat_obs }),
+
+            // 65. Función a ejecutar si la solicitud es 
+            // exitosa.
             success: function(response) {
+                // 66. Muestra una alerta informando al usuario 
+                // que la categoría fue añadida correctamente
                 alert('Categoría añadida correctamente');
-                // 35. Se utiliza jQuery para resetear el 
-                // formulario
+
+                // 67. Resetea el formulario para limpiar los 
+                // campos después de la inserción exitosa
+
+                // 68. Resetea el formulario 'addCategoriaForm' 
+                // a sus valores predeterminados después de 
+                // enviar los datos. Se lo realiza accediendo 
+                // al primer elemento del selector jQuery con 
+                // '[0]' para obtener el elemento de formulario
+                // nativo de DOM y luego aplicando el método 
+                // 'reset()'. Esto limpia todos los campos, 
+                // preparando el formulario para una nueva 
+                // entrada
                 $('#addCategoriaForm')[0].reset();
+
+                // 69. Llama a la función obtenerCategorias() 
+                // para actualizar la lista de categorías 
+                // mostradas
                 obtenerCategorias();
             },
+
+            // 70. Función a ejecutar si ocurre un error en la 
+            // solicitud
             error: function() {
+                // 71. Muestra una alerta informando al usuario 
+                // que hubo un error al añadir la categoría
                 alert('Error al añadir categoría');
             }
         });
     });
 
-    // 36. Define la función para añadir un nuevo 
+    // 72. Define la función para añadir un nuevo 
     // producto mediante el formulario
     $('#addProductoForm').submit(function(e) {
         e.preventDefault();
@@ -247,7 +386,7 @@ $(document).ready(function() {
         var prod_nom = $('#prod_nom').val();
         var prod_desc = $('#prod_desc').val();
         var prod_precio = $('#prod_precio').val();
-        // 37. Realiza una solicitud AJAX con jQuery 
+        // 73. Realiza una solicitud AJAX con jQuery 
         // para insertar el nuevo producto
         $.ajax({
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=InsertProducto',
@@ -256,16 +395,16 @@ $(document).ready(function() {
             data: JSON.stringify({ 
                 cat_id, prod_nom, prod_desc, prod_precio 
             }),
-            // 38. Función a ejecutar si la solicitud 
+            // 74. Función a ejecutar si la solicitud 
             // es exitosa
             success: function(response) {
                 alert('Producto añadido correctamente');
-                // 39. Se utiliza jQuery para resetear el 
+                // 75. Se utiliza jQuery para resetear el 
                 // formulario
                 $('#addProductoForm')[0].reset();
                 obtenerProductos();
             },
-            // 40. Función a ejecutar si la solicitud 
+            // 76. Función a ejecutar si la solicitud 
             // falla
             error: function() {
                 alert('Error al añadir producto');
@@ -273,7 +412,7 @@ $(document).ready(function() {
         });
     });
 
-    // 41. Inicializa las listas de categorías y 
+    // 77. Inicializa las listas de categorías y 
     // productos al cargar la página
     obtenerCategorias();
     obtenerProductos();
