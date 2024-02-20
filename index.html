@@ -36,15 +36,19 @@
         <form id="addCategoriaForm">
             <b>Nombre: </b>
             <br>
-            <input type="text" id="cat_nom" placeholder="............"><br>
+            <input type="text" id="cat_nom" 
+            placeholder="............"><br>
             <br>
 
             <b>Observación: </b>
             <br>
-            <input type="text" id="cat_obs" placeholder="............"><br>
+            <input type="text" id="cat_obs" 
+            placeholder="............"><br>
             <br>
 
-            <button type="submit" class="boton1">Añadir Categoría</button>
+            <button type="submit" class="boton1">
+                Añadir Categoría
+            </button>
         </form>
     
         <div class="linea_horizontal2"></div>
@@ -53,24 +57,30 @@
         <form id="addProductoForm">
             <b>Categoría ID: </b>
             <br>
-            <input type="number" id="prod_cat_id" placeholder="............"><br>
+            <input type="number" id="prod_cat_id" 
+            placeholder="............"><br>
             <br>
 
             <b>Nombre: </b>
             <br>
-            <input type="text" id="prod_nom" placeholder="............"><br>
+            <input type="text" id="prod_nom" 
+            placeholder="............"><br>
             <br>
 
             <b>Descripción: </b>
             <br>
-            <input type="text" id="prod_desc" placeholder="............"><br>
+            <input type="text" id="prod_desc" 
+            placeholder="............"><br>
             <br>
             
             <b>Precio: </b>
-            <input type="number" step="0.01" id="prod_precio" placeholder="............"><br>
+            <input type="number" step="0.01" 
+            id="prod_precio" placeholder="............"><br>
             <br>
 
-            <button type="submit" class="boton1">Añadir Producto</button>
+            <button type="submit" class="boton1">
+                Añadir Producto
+            </button>
         </form>
 
         <div class="linea_horizontal"></div>
@@ -86,7 +96,8 @@
             <br>
             <!-- Campo para mostrar el ID de la 
                 categoría, no editable -->
-            <input type="number" id="edit_cat_id" readonly><br>
+            <input type="number" id="edit_cat_id" 
+            readonly><br>
             <br>
 
             <b>Nombre: </b>
@@ -99,7 +110,8 @@
             <input type="text" id="edit_cat_obs"><br>
             <br>
 
-            <button onclick="submitEditCategoria()" class="boton2">Guardar Cambios</button>
+            <button onclick="submitEditCategoria()" 
+            class="boton2">Guardar Cambios</button>
         </div>
     
         <!-- Sección oculta para la edición de 
@@ -113,7 +125,8 @@
             <br>
             <!-- Campo para mostrar el ID del 
                 producto, no editable -->
-            <input type="number" id="edit_prod_id" readonly><br>
+            <input type="number" id="edit_prod_id" 
+            readonly><br>
             <br>
 
             <b>Categoría ID: </b>
@@ -133,10 +146,12 @@
 
             <b>Precio: </b>
             <br>
-            <input type="number" step="0.01" id="edit_prod_precio"><br>
+            <input type="number" step="0.01" 
+            id="edit_prod_precio"><br>
             <br>
 
-            <button onclick="submitEditProducto()" class="boton2">Guardar Cambios</button>
+            <button onclick="submitEditProducto()" 
+            class="boton2">Guardar Cambios</button>
         </div>
     
         <div class="linea_horizontal"></div>

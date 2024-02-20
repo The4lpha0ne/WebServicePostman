@@ -83,7 +83,8 @@ $(document).ready(function() {
 
     // 18. Define la función para mostrar el formulario 
     // de edición de categoría
-    window.mostrarEditarCategoria = function(cat_id, cat_nom, cat_obs) {
+    window.mostrarEditarCategoria = 
+    function(cat_id, cat_nom, cat_obs) {
         // 19. Se utiliza jQuery para asignar 
         // valores y mostrar el formulario
         $('#edit_cat_id').val(cat_id);
@@ -94,7 +95,10 @@ $(document).ready(function() {
 
     // 20. Muestra el formulario de edición para 
     // producto
-    window.mostrarEditarProducto = function(prod_id, cat_id, prod_nom, prod_desc, prod_precio) {
+    window.mostrarEditarProducto = 
+    function(
+        prod_id, cat_id, prod_nom, prod_desc, prod_precio
+    ) {
         $('#edit_prod_id').val(prod_id);
         $('#edit_prod_cat_id').val(cat_id);
         $('#edit_prod_nom').val(prod_nom);
@@ -149,7 +153,9 @@ $(document).ready(function() {
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=UpdateProducto',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ prod_id, cat_id, prod_nom, prod_desc, prod_precio }),
+            data: JSON.stringify({ 
+                prod_id, cat_id, prod_nom, prod_desc, prod_precio 
+            }),
             success: function(response) {
                 alert('Producto actualizado correctamente');
                 obtenerProductos();
@@ -184,7 +190,9 @@ $(document).ready(function() {
 
     // 30. Define la función para eliminar un producto
     window.eliminarProducto = function(prod_id) {
-        if(confirm("¿Estás seguro de querer eliminar este producto?")) {
+        if(confirm(
+            "¿Estás seguro de querer eliminar este producto?"
+        )) {
             // 31. Realiza una solicitud AJAX con jQuery 
             // para eliminar el producto
             $.ajax({
@@ -220,7 +228,8 @@ $(document).ready(function() {
             data: JSON.stringify({ cat_nom, cat_obs }),
             success: function(response) {
                 alert('Categoría añadida correctamente');
-                // 35. Se utiliza jQuery para resetear el formulario
+                // 35. Se utiliza jQuery para resetear el 
+                // formulario
                 $('#addCategoriaForm')[0].reset();
                 obtenerCategorias();
             },
@@ -244,12 +253,15 @@ $(document).ready(function() {
             url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=InsertProducto',
             type: 'POST',
             contentType: 'application/json',
-            data: JSON.stringify({ cat_id, prod_nom, prod_desc, prod_precio }),
+            data: JSON.stringify({ 
+                cat_id, prod_nom, prod_desc, prod_precio 
+            }),
             // 38. Función a ejecutar si la solicitud 
             // es exitosa
             success: function(response) {
                 alert('Producto añadido correctamente');
-                // 39. Se utiliza jQuery para resetear el formulario
+                // 39. Se utiliza jQuery para resetear el 
+                // formulario
                 $('#addProductoForm')[0].reset();
                 obtenerProductos();
             },

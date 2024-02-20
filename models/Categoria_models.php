@@ -1,10 +1,15 @@
 <?php
     /**
-     * Script para gestionar las categorías mediante una API, permitiendo realizar operaciones CRUD.
+     * Script para gestionar las categorías mediante una API, 
+     * permitiendo realizar operaciones CRUD.
      * 
-     * Permite el acceso desde cualquier origen y soporta los métodos GET y POST.
-     * Se utiliza para manejar las categorías activas en una base de datos, incluyendo la obtención de todas las categorías,
-     * una categoría por ID, inserción, actualización y eliminación de categorías.
+     * Permite el acceso desde cualquier origen y soporta los 
+     * métodos GET y POST.
+     * 
+     * Se utiliza para manejar las categorías activas en una 
+     * base de datos, incluyendo la obtención de todas las 
+     * categorías, una categoría por ID, inserción, 
+     * actualización y eliminación de categorías.
      */
 
     header("Access-Control-Allow-Origin: *");
@@ -12,44 +17,52 @@
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With");
     header('Content-Type: application/json');
 
-    // 1. Define la clase Categoria que extiende de Conectar para utilizar la conexión a la base de datos.
+    // 1. 
     /**
-     * Clase Categoria que extiende de Conectar para utilizar la conexión a la base de datos.
+     * Es la clase Categoria que extiende de Conectar para 
+     * utilizar la conexión a la base de datos.
      * 
      * @access public
      */
     Class Categoria extends Conectar {
-        // 2. Obtiene todas las categorías activas de la base de datos.
+        // 2. 
         /**
-         * Obtiene todas las categorías activas de la base de datos.
+         * Obtiene todas las categorías activas de la base de 
+         * datos.
          * 
-         * Realiza una consulta para obtener todas las categorías que están marcadas como activas.
+         * Realiza una consulta para obtener todas las 
+         * categorías que están marcadas como activas.
          * 
          * @access public
-         * @return array Asociativo con todas las categorías activas.
+         * @return array Asociativo con todas las categorías 
+         * activas.
          */
         public function get_categoria() {
-            // 3. Establece conexión con la base de datos.
+            // 3. Establece conexión con la base de datos
             $conectar = parent::conexion();
-            // 4. Establece el conjunto de caracteres a UTF-8.
+
+            // 4. Establece el conjunto de caracteres a UTF-8
             parent::set_names();
 
-            // 5. Prepara la consulta SQL para seleccionar todas las categorías activas.
+            // 5. Prepara la consulta SQL para seleccionar 
+            // todas las categorías activas
             $sql = "SELECT * FROM tm_categoria WHERE est = 1";
             $sql = $conectar -> prepare($sql);
-
-            // 6. Ejecuta la consulta.
             $sql -> execute();
 
-            // 7. Retorna los resultados como un array asociativo.
-            return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
+            // 6. Retorna los resultados como un array 
+            // asociativo
+            return $resultado = 
+            $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // 8. Obtiene una categoría por su ID.
+        // 7. 
         /**
          * Obtiene una categoría por su ID.
          * 
-         * Realiza una consulta para obtener los detalles de una categoría específica por su identificador único.
+         * Realiza una consulta para obtener los detalles de 
+         * una categoría específica por su identificador 
+         * único.
          * 
          * @access public
          * @param int $cat_id ID de la categoría a obtener.
@@ -59,55 +72,67 @@
             $conectar = parent::conexion();
             parent::set_names();
 
-            // 9. Prepara la consulta SQL para seleccionar una categoría por ID.
-            $sql = "SELECT * FROM tm_categoria WHERE est = 1 AND cat_id = ?";
+            // 8. Prepara la consulta SQL para seleccionar 
+            // una categoría por ID
+            $sql = 
+            "SELECT * FROM tm_categoria 
+            WHERE est = 1 AND cat_id = ?";
+
             $sql = $conectar -> prepare($sql);
 
-            // 10. Vincula el ID de la categoría al parámetro de la consulta.
+            // 9. Vincula el ID de la categoría al parámetro 
+            // de la consulta
             $sql -> bindValue(1, $cat_id);
-
-            // 11. Ejecuta la consulta.
             $sql -> execute();
 
-            // 12. Retorna los resultados.
-            return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
+            // 10. Retorna los resultados
+            return $resultado = 
+            $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // 14. Inserta una nueva categoría en la base de datos.
+        // 11. 
         /**
          * Inserta una nueva categoría en la base de datos.
          * 
-         * Añade una nueva categoría con un nombre y observaciones opcionales.
+         * Añade una nueva categoría con un nombre y 
+         * observaciones opcionales.
          * 
          * @access public
          * @param string $cat_nom Nombre de la nueva categoría.
-         * @param string $cat_obs Observaciones de la nueva categoría.
-         * @return array Asociativo con el resultado de la operación.
+         * @param string $cat_obs Observaciones de la nueva 
+         * categoría.
+         * 
+         * @return array Asociativo con el resultado de la 
+         * operación.
          */
         public function insert_categoria($cat_nom, $cat_obs) {
             $conectar = parent::conexion();
             parent::set_names();
 
-            // 15. Prepara la consulta SQL para insertar una nueva categoría.
-            $sql = "INSERT INTO tm_categoria(cat_id, cat_nom, cat_obs, est) VALUES (NULL, ?, ?, '1');";
+            // 12. Prepara la consulta SQL para insertar una 
+            // nueva categoría
+            $sql = 
+            "INSERT INTO tm_categoria(cat_id, cat_nom, cat_obs, est) 
+            VALUES (NULL, ?, ?, '1');";
+
             $sql = $conectar -> prepare($sql);
 
-            // 16. Vincula los valores de nombre y observación de la categoría a la consulta.
+            // 13. Vincula los valores de nombre y observación de 
+            // la categoría a la consulta.
             $sql -> bindValue(1, $cat_nom);
             $sql -> bindValue(2, $cat_obs);
-
-            // 17. Ejecuta la consulta.
             $sql -> execute();
 
-            // 18. Retorna los resultados.
+            // 14. Retorna los resultados.
             return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // 19. Actualiza una categoría existente en la base de datos.
+        // 15. 
         /**
          * Actualiza una categoría existente en la base de datos.
          * 
-         * Modifica los datos de una categoría existente basándose en su ID.
+         * Modifica los datos de una categoría existente basándose 
+         * en su ID.
          * 
          * @access public
          * @param int $cat_id ID de la categoría a actualizar.
@@ -119,46 +144,62 @@
             $conectar = parent::conexion();
             parent::set_names();
 
-            // 20. Prepara la consulta SQL para actualizar una categoría.
-            $sql = "UPDATE tm_categoria set cat_nom = ?, cat_obs = ? WHERE cat_id = ?";
+            // 16. Prepara la consulta SQL para actualizar una 
+            // categoría.
+            $sql = 
+            "UPDATE tm_categoria set cat_nom = ?, cat_obs = ? 
+            WHERE cat_id = ?";
+
             $sql = $conectar -> prepare($sql);
 
-            // 21. Vincula los nuevos valores a la consulta.
+            // 17. Vincula los nuevos valores a la consulta.
             $sql -> bindValue(1, $cat_nom);
             $sql -> bindValue(2, $cat_obs);
             $sql -> bindValue(3, $cat_id);
-
-            // 22. Ejecuta la consulta.
             $sql -> execute();
 
-            // 23. Retorna los resultados.
-            return $resultado = $sql -> fetchAll(PDO::FETCH_ASSOC);
+            // 18. Retorna los resultados.
+            return $resultado = 
+            $sql -> fetchAll(PDO::FETCH_ASSOC);
         }
 
-        // 24. Define el método para eliminar una categoría por su ID.
+        // 19. 
         /**
-         * Elimina una categoría por su ID.
+         * Define el método para eliminar una categoría por 
+         * su ID.
          * 
-         * Elimina de la base de datos la categoría especificada por el ID proporcionado.
+         * Elimina de la base de datos la categoría 
+         * especificada por el ID proporcionado.
          * 
          * @access public
          * @param int $cat_id ID de la categoría a eliminar.
-         * @return bool Verdadero si la operación fue exitosa, falso en caso contrario.
+         * @return bool Verdadero si la operación fue exitosa, 
+         * falso en caso contrario.
          */
         public function delete_categoria($cat_id) {
-            // 25. Establece conexión con la base de datos.
+            // 20. Establece conexión con la base de datos
             $conectar = parent::conexion();
-            // 26. Configura la codificación de caracteres a UTF-8.
+
+            // 21. Configura la codificación de caracteres 
+            // a UTF-8
             parent::set_names();
-            // 27. Prepara la consulta SQL para eliminar una categoría específica.
+
+            // 22. Prepara la consulta SQL para eliminar una 
+            // categoría específica
             $sql = "DELETE FROM tm_categoria WHERE cat_id = ?";
             $sql = $conectar->prepare($sql);
-            // 28. Vincula el valor del ID de categoría al parámetro de la consulta.
+
+            // 23. Vincula el valor del ID de categoría al 
+            // parámetro de la consulta
             $sql->bindValue(1, $cat_id);
-            // 29. Ejecuta la consulta y evalúa si la operación fue exitosa.
+
+            // 24. Ejecuta la consulta y evalúa si la 
+            // operación fue exitosa.
             if ($sql->execute()) {
                 return true; // Indica una operación exitosa.
-            } else {
+            } 
+            
+            else {
                 return false; // Indica un fallo en la operación.
             }
         }
