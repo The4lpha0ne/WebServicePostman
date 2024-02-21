@@ -49,7 +49,7 @@ $(document).ready(function() {
         // 12. Realiza una petición AJAX con jQuery para 
         // obtener los productos
         $.ajax({
-            url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=GetAllProductos',
+            url: 'http://localhost/PERSONAL_WebServicePostman/controller/producto_controller.php?op=GetAllProductos',
             type: 'GET',
             dataType: 'json',
             // 13. Función a ejecutar si la solicitud 
@@ -206,7 +206,7 @@ $(document).ready(function() {
             // la solicitud POST. Este endpoint se encarga de 
             // la lógica para actualizar la información de 
             // un producto en el servidor
-            url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=UpdateProducto',
+            url: 'http://localhost/PERSONAL_WebServicePostman/controller/producto_controller.php?op=UpdateProducto',
 
             // 43. Especifica el método HTTP a usar. POST se 
             // utiliza aquí porque se está enviando datos al 
@@ -287,7 +287,7 @@ $(document).ready(function() {
             // 55. Realiza una solicitud AJAX con jQuery 
             // para eliminar el producto
             $.ajax({
-                url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=DeleteProducto',
+                url: 'http://localhost/PERSONAL_WebServicePostman/controller/producto_controller.php?op=DeleteProducto',
                 type: 'POST',
                 data: JSON.stringify({ prod_id }),
                 contentType: 'application/json; charset=utf-8',
@@ -389,7 +389,7 @@ $(document).ready(function() {
         // 73. Realiza una solicitud AJAX con jQuery 
         // para insertar el nuevo producto
         $.ajax({
-            url: 'http://localhost/PERSONAL_WebServicePostman/controller/categoria_controller.php?op=InsertProducto',
+            url: 'http://localhost/PERSONAL_WebServicePostman/controller/producto_controller.php?op=InsertProducto',
             type: 'POST',
             contentType: 'application/json',
             data: JSON.stringify({ 
